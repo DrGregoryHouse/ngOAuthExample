@@ -1,0 +1,36 @@
+<!--<pre >{{list |json }}</pre>-->
+<div class="drive panel panel-default">
+  <div class="drive-header panel-heading">
+    <div class="row">
+      <div class="col-lg-4">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <div class="col-lg-10">
+              <input type="text" placeholder="Enter file filter" class="form-control" id="drive-file-filter" ng-model="filterText" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-8">
+        <h3 class="pull-right no-margin drive-header">ngGAPI JSON Response for 'Drive.listFiles()'
+         </h3>
+      </div>
+    </div>
+  </div>
+<div class="drive-body panel-body">
+  <div class="drive-rail col-lg-3">
+    <menu class="drive-file-list no-padding">
+      <ul class="no-padding no-margin no-padding ">
+        <!-- Create list items for each folder or file in your Google Drive -->
+        <li style="cursor: pointer; list-style-image: url({{file.iconLink}});" ng-repeat="file in list.items | filter:filterText">
+          <h6>{{file.title}}</h6>
+        </li>
+      </ul>
+    </menu>
+  </div>
+  <div class="drive-preview col-lg-9">
+      <pre class="row code-sample">
+        <code ng-repeat="resp in list.items | filter:filterText">{{resp | json}}</code>
+      </pre>
+  </div>
+</div>
